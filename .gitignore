@@ -3,3 +3,5 @@
 *.img.zip
 *.tar.gz
 .vagrant/
+user-data
+meta-data
