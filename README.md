@@ -23,6 +23,26 @@ Feedback is always welcome!
 
 You can build the SD card image locally with Vagrant.
 
+Before you flash, prepare your cloud-init config files.
+
+### user-data
+
+The file `user-data` can configure the hostname, add users, SSH keys etc.
+
+### meta-data
+
+The file `meta-data` is not used right now and may be empty.
+
+### Run flash script
+
+Now get the latest version of the [flash script](https://github.com/hypriot/flash) to support the new cloud-init options.
+
+Flash one of the released SD card images with
+
+```bash
+flash -u ./user-data -m ./meta-data <URL to hypriotos-rpi-v*.img.zip>
+```
+
 ### Setting up build environment
 
 Make sure you have [vagrant](https://docs.vagrantup.com/v2/installation/) and [docker-machine](https://docs.docker.com/machine/install-machine/) installed.
@@ -73,6 +93,8 @@ BOARD=black-pearl.local make test-integration
 
 This test works with any Docker Machine, so you do not need to create the
 Vagrant box.
+
+
 
 ## Deployment
 
