@@ -188,20 +188,23 @@ apt-get install -y \
   --no-install-recommends \
   lsb-release
 
-# install hypriot packages for docker-tools
-apt-get install -y \
-  --no-install-recommends \
-  "device-init=${DEVICE_INIT_VERSION}"
-
 # install docker-machine
 curl -sSL -o /usr/local/bin/docker-machine "https://github.com/docker/machine/releases/download/v${DOCKER_MACHINE_VERSION}/docker-machine-Linux-armhf"
 chmod +x /usr/local/bin/docker-machine
 
 # install docker-compose
 apt-get install -y \
-  --no-install-recommends \
-  python-pip
+--no-install-recommends \
+python-pip
+
+# install cloud-init + Docker Compose
+apt-get install -y \
+cloud-init
+
 pip install docker-compose
+mkdir -p /var/lib/cloud/seed/nocloud-net
+ln -s /boot/user-data /var/lib/cloud/seed/nocloud-net/user-data
+ln -s /boot/meta-data /var/lib/cloud/seed/nocloud-net/meta-data
 
 # set up Docker APT repository and install docker-engine package
 curl -sSL https://get.docker.com | /bin/sh
