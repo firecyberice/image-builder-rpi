@@ -190,15 +190,14 @@ apt-get install -y \
 
 # install hypriot packages for docker-tools
 apt-get install -y \
-  --no-install-recommends \
-  "docker-machine=${DOCKER_MACHINE_VERSION}" \
-  "device-init=${DEVICE_INIT_VERSION}"
+  "docker-machine=${DOCKER_MACHINE_VERSION}"
 
-# install docker-compose
-apt-get install -y \
-  --no-install-recommends \
-  python-pip
+# install cloud-init + Docker Compose
+apt-get install -y cloud-init python-pip
 pip install docker-compose
+mkdir -p /var/lib/cloud/seed/nocloud-net
+ln -s /boot/user-data /var/lib/cloud/seed/nocloud-net/user-data
+ln -s /boot/meta-data /var/lib/cloud/seed/nocloud-net/meta-data
 
 # set up Docker APT repository and install docker-engine package
 curl -sSL https://get.docker.com | /bin/sh
