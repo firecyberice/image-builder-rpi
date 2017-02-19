@@ -7,7 +7,7 @@ script:
   - VERSION=${TRAVIS_TAG} make sd-image
 branches:
   only:
-    - master
+    - cloud-init
     - /^v\d.*$/
 deploy:
   provider: releases
