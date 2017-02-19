@@ -5,15 +5,11 @@
 
 ## Flash
 
-Flash one of the released SD card images
+Before you flash, prepare your cloud-init config files.
 
-```bash
-flash https://github.com/StefanScherer/image-builder-rpi/releases/download/v1.3.1/hypriotos-rpi-v1.3.1.img.zip
-```
+### user-data
 
-After flashing add two files to the FAT partition.
-
-### /boot/user-data
+The file `user-data` can configure the hostname, add users, SSH keys etc.
 
 ```
 #cloud-config
@@ -31,10 +27,21 @@ users:
       - ssh-rsa AAAAB3NzaC...RmWNN user@client
 ```
 
-### /boot/meta-data
+### meta-data
+
+The file `meta-data` is not used right now and may be empty.
 
 ```
-hostname: black-pearl
+```
+
+### Run flash script
+
+Now get the latest version of the [flash script](https://github.com/hypriot/flash) to support the new cloud-init options.
+
+Flash one of the released SD card images with
+
+```bash
+flash -u ./user-data -m ./meta-data https://github.com/StefanScherer/image-builder-rpi/releases/download/v1.3.1/hypriotos-rpi-v1.3.1.img.zip
 ```
 
 ## Run integration tests
