@@ -77,3 +77,7 @@ describe file('/boot/overlays') do
   it { should be_mode 755 }
   it { should be_owned_by 'root' }
 end
+
+describe file('/boot/device-init.yaml') do
+  it { should_not be_file }
+end
