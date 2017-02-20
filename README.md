@@ -29,6 +29,24 @@ Before you flash, prepare your cloud-init config files.
 
 The file `user-data` can configure the hostname, add users, SSH keys etc. See [Cloud config examples](http://cloudinit.readthedocs.io/en/latest/topics/examples.html) for some more use cases.
 
+```
+#cloud-config
+hostname: black-pearl
+# fqdn: mynode.example.com
+manage_etc_hosts: true
+runcmd:
+ - [ systemctl, restart, avahi-daemon ]
+users:
+  - name: pirate
+    primary-group: users
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    groups: users,docker,video
+    ssh-import-id: None
+    lock_passwd: true
+    ssh-authorized-keys:
+      - ssh-rsa AAAAB3NzaC...RmWNN user@client
+```
+
 ### meta-data
 
 The file `meta-data` is not used right now and may be empty.
