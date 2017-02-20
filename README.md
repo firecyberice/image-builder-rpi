@@ -43,7 +43,7 @@ Now get the latest version of the [flash script](https://github.com/hypriot/flas
 Flash one of the released SD card images with
 
 ```bash
-flash -u ./user-data -m ./meta-data https://github.com/StefanScherer/image-builder-rpi/releases/download/v1.3.1/hypriotos-rpi-v1.3.1.img.zip
+flash -u ./user-data -m ./meta-data https://github.com/StefanScherer/image-builder-rpi/releases/download/v1.4.0/hypriotos-rpi-v1.4.0.img.zip
 ```
 
 ## Run integration tests
