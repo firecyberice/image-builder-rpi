@@ -9,7 +9,7 @@ Before you flash, prepare your cloud-init config files.
 
 ### user-data
 
-The file `user-data` can configure the hostname, add users, SSH keys etc.
+The file `user-data` can configure the hostname, add users, SSH keys etc. See [Cloud config examples](http://cloudinit.readthedocs.io/en/latest/topics/examples.html) for some more use cases.
 
 ```
 #cloud-config
