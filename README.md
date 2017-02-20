@@ -16,6 +16,8 @@ The file `user-data` can configure the hostname, add users, SSH keys etc. See [C
 hostname: black-pearl
 # fqdn: mynode.example.com
 manage_etc_hosts: true
+runcmd:
+ - [ systemctl, restart, avahi-daemon ]
 users:
   - name: pirate
     primary-group: users
