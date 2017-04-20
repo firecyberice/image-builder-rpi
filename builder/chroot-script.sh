@@ -132,8 +132,16 @@ apt-get install -y \
   "libraspberrypi-dev=${KERNEL_BUILD}" \
   "libraspberrypi-bin=${KERNEL_BUILD}"
 
-# add user pirate to group video (for using the Raspberry Pi camera)
-usermod -a -G video pirate
+# remove pirate user and group
+userdel --remove pirate || true
+delgroup --system --quiet pirate || true
+
+# set path for all users
+sed -i -- "s/pirate/\$user/g" /etc/skel/.profile
+
+# remove sudoers files
+rm -f etc/sudoers.d/010_pi-nopasswd
+rm -f etc/sudoers.d/user-pirate
 
 # enable serial console
 printf "# Spawn a getty on Raspberry Pi serial line\nT0:23:respawn:/sbin/getty -L ttyAMA0 115200 vt100\n" >> /etc/inittab
