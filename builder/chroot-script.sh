@@ -132,6 +132,13 @@ apt-get install -y \
   "libraspberrypi-dev=${KERNEL_BUILD}" \
   "libraspberrypi-bin=${KERNEL_BUILD}"
 
+# remove pirate user and group
+userdel --remove pirate
+delgroup --system --quiet pirate
+
+# set path for all users
+sed -i -- "s/pirate/\$user/g" /etc/skel/.profile
+
 # remove sudoers files
 rm -f etc/sudoers.d/010_pi-nopasswd
 rm -f etc/sudoers.d/user-pirate
