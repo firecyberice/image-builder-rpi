@@ -11,8 +11,8 @@ port = ENV['PORT']
 
 options = Net::SSH::Config.for(host)
 
-options[:user] ||= 'pirate'
-options[:password] ||= 'hypriot'
+options[:user] 
+options[:password] 
 if port
   options[:port] = port
 end

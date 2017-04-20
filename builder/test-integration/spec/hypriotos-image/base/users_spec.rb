@@ -8,10 +8,6 @@ describe group('docker') do
   it { should exist }
 end
 
-describe user('pirate') do
-  it { should_not exist }
-end
-
 describe file('/etc/sudoers') do
   it { should be_file }
   it { should be_mode 440 }
