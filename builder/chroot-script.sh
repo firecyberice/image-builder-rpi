@@ -133,8 +133,8 @@ apt-get install -y \
   "libraspberrypi-bin=${KERNEL_BUILD}"
 
 # remove pirate user and group
-userdel --remove pirate
-delgroup --system --quiet pirate
+userdel --remove pirate || true
+delgroup --system --quiet pirate || true
 
 # set path for all users
 sed -i -- "s/pirate/\$user/g" /etc/skel/.profile
