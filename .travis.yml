@@ -7,7 +7,7 @@ script:
   - VERSION=${TRAVIS_TAG} make sd-image
 branches:
   only:
-    - master
+    - autobuild
     - /^v\d.*$/
 deploy:
   provider: releases
